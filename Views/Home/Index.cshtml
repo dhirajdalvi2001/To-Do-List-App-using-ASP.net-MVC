@@ -1,0 +1,39 @@
+﻿@model System.Data.DataTable
+@{
+    ViewData["Title"] = "Home Page";
+}
+@* Heading *@
+<h1 style="margin-top: 50px; text-align:center">Todo List</h1>
+<form method="post" style="padding: 10px; margin-top: 50px; width: 400px;">
+    <input type="hidden" name="id" />
+    <input type="number" placeholder="Enter number " name="no" required style="width:90%;"/>
+    <input type="text" placeholder="Enter an item" name="item" required style="width: 92%; text-transform: capitalize" />
+    <input type="submit" value="+" />
+</form>
+@* Table Div *@
+<div class="list" style="margin-top: 20px">
+        @{
+            for (int i = @Model.Rows.Count - 1; i >=0 ; i--)
+            {
+             @* Row Div *@
+            <div style="width: 400px; display:flex; justify-content:space-between;" class="items">
+                    @* Item Div *@
+                    @* @Model.Rows[i][1] *@
+
+              
+                    
+                    <div style="text-transform: capitalize" class="item">@Model.Rows[i][1]</div>
+
+               <div style="text-transform: capitalize" class="item">@Model.Rows[i][2]</div>
+                  
+                    @* Buttons Div *@
+                    <div class="buttons">
+                        @* Url.Action Method with parameters (Action, ControllerName, Parameter) *@
+                        @* Action(int Parmeter) *@
+                        <span><a href="@Url.Action("Update","Home", new {id=Model.Rows[i][0]})">Update</a></span>
+                        <span><a href="@Url.Action("Delete","Home", new {id=Model.Rows[i][0]})">Delete</a></span>
+                    </div>
+                </div>
+            }   
+        }
+</div>

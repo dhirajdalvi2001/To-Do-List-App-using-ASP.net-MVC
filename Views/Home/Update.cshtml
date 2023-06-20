@@ -1,0 +1,13 @@
+﻿@model System.Data.DataTable
+@{
+    ViewData["Title"] = "Update";
+}
+@* Heading *@
+<h1 style="margin-top: 50px; text-align:center">Todo List</h1>
+<form method="post" style="padding: 10px; margin-top: 50px; width: 400px;">
+    @* Item id *@
+    <input type="hidden" value="@Model.Rows[0][0]" name="id" />
+    @* Item name *@
+    <input type="text" value="@Model.Rows[0][1]" name="item" required style="width: 92%; text-transform: capitalize" />
+    <input type="submit" value="+" />
+</form>
